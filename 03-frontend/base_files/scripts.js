@@ -14,6 +14,8 @@ const placeImages = [
 
 document.addEventListener('DOMContentLoaded', () => {
   checkAuthentication();
+
+  const token = getCookie('token');
   
   const loginForm = document.getElementById('login-form');
   if (loginForm) {
@@ -49,8 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const placeId = getPlaceIdFromURL();
   if (placeId) {
-    const token = getCookie('token');
     fetchPlaceDetails(token, placeId);
+  }
+
+  const reviewForm = document.getElementById('review-form');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const reviewText = document.getElementById('review-text').value;
+      const rating = document.getElementById('rating').value;
+
+      try {
+        const response = await submitReview(token, placeId, reviewText, rating);
+        handleReviewResponse(response);
+      } catch (error) {
+        console.error('Error submitting review:', error);
+        alert('Failed to submit review');
+      }
+    });
   }
 });
 
@@ -245,7 +263,41 @@ function displayPlaceDetails(place) {
   }
 }
 
+async function submitReview(token, placeId, reviewText, rating) {
+  const response = await fetch(`http://127.0.0.1:5000/places/${placeId}/reviews`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ 
+      review: reviewText,
+      rating: rating 
+    })
+  });
+  if (response.status === 201) {
+    return Promise.resolve({ status: 201 });
+  }
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+function handleReviewResponse(response) {
+  // Check if the status code is 200, 201, or 204
+  if (response.status === 200 || response.status === 201 || response.status === 204) {
+    alert('Review submitted successfully!');
+    document.getElementById('review-form').reset();
+  }
+  else {
+    alert('Failed to submit review');
+  }
+}
+
 function logoutUser() {
   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  window.location.href = '/login.html'; // redirect to login page
+  window.location.href = 'login.html'; // redirect to login page
 }

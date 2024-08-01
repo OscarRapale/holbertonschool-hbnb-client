@@ -44,13 +44,7 @@
                 <label for="review-text">Your Review:</label>
                 <textarea id="review-text" name="review-text" required></textarea>
                 <label for="review-rating">Rating:</label>
-                <select name="review-rating" id="review-rating" required>
-                    <option value="1">1 Star</option>
-                    <option value="2">2 Star</option>
-                    <option value="3">3 Star</option>
-                    <option value="4">4 Star</option>
-                    <option value="5">5 Star</option>
-                </select> 
+                <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)">
                 <button type="submit" class="submit-button">Submit Review</button>
             </form>
         </section>
