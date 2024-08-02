@@ -4,20 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="index_styles.css">
+    <link rel="icon"  type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="login_styles.css">
 </head>
 <body>
     <main>
+        <img src="images/logo.png" alt="HBnB logo" id="logo">
         <form id="login-form">
-            <h2>Login</h2>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Login</button>
+            <div class="login-header">
+                <header>Login</header>
+            </div>
+            <div class="input-box">
+                <input type="email" class="input-field" id="email" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="password" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="forgot">
+                <section>
+                    <input type="checkbox" id="check">
+                    <label for="check">Remember me</label>
+                </section>
+                <section>
+                    <a href="#">Forgot password</a>
+                </section>
+            </div>
+
             <p id="error-message" class="error-message"></p>
+
+            <div class="input-submit">
+                <button class="submit-button" id="submit"></button>
+                <label for="submit">Sign In</label>
+            </div>
+            <div class="sign-up-link">
+                <p>Don't have an account? <a href="#">Sign Up</a></p>
+            </div>
         </form>
     </main>
     <script src="scripts.js"></script>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Place Details</title>
-    <link rel="stylesheet" href="place_style.css">
+    <link rel="icon"  type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="place_styles.css">
 </head>
 <body>
     <main>
@@ -13,7 +14,7 @@
             <nav>
                 <a href="index.html" id="home-link">Home</a>
                 <a href="login.html" id="login-link">Login</a>
-                <button onclick="logoutUser()">Logout</button>
+                <button id="logout-button" onclick="logoutUser()" style="display: none;">Logout</button>
             </nav>
         </header>
         <section id="place-details" class="place-details">
@@ -44,7 +45,14 @@
                 <label for="review-text">Your Review:</label>
                 <textarea id="review-text" name="review-text" required></textarea>
                 <label for="review-rating">Rating:</label>
-                <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)">
+                <div class="star-rating" id="rating">
+                    <span data-value="5" class="star">&#9733;</span>
+                    <span data-value="4" class="star">&#9733;</span>
+                    <span data-value="3" class="star">&#9733;</span>
+                    <span data-value="2" class="star">&#9733;</span>
+                    <span data-value="1" class="star">&#9733;</span>
+                   
+                </div>
                 <button type="submit" class="submit-button">Submit Review</button>
             </form>
         </section>
@@ -54,7 +62,7 @@
         </section>
     </main>
     <footer>
-        <p>All rights reserved</p>
+        <p>© 2024 HBnB Evolution. All rights reserved.</p>
     </footer>
     <script src="scripts.js"></script>
 </body>

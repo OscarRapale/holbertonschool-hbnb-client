@@ -1,18 +1,19 @@
-/* Styles for place.html */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: #fff;
     color: #333;
 }
 
 header {
-    background-color: #333;
+    background-color: #74c1ab;
     color: #fff;
     padding: 1rem;
     display: flex;
@@ -31,25 +32,39 @@ nav a {
 }
 
 #login-link {
-    padding: 10px 20px;
-    background-color: #ddd;
+    padding: 10px 25px;
+    width: 90px;
+    background-color: #e6596b;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    margin: 20px auto;
 }
 
 #home-link {
     padding: 10px 20px;
-    background-color: #ddd;
+    background-color: #e6596b;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    margin-right: 20px;
+}
+
+#logout-button {
+    padding: 10px 20px;
+    background-color: #e6596b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #74c1ab;
     color: #fff;
     position: relative;
     bottom: 0;
@@ -84,6 +99,7 @@ footer {
     text-align: center;
     line-height: 1.9;
     justify-content: space-between;
+    background-color: #f6f5f4;
 }
 
 #reviews-section {
@@ -98,6 +114,7 @@ footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.9;
     text-align: left;
+    background-color: #f6f5f4;
 }
 
 .add-review {
@@ -123,7 +140,7 @@ footer {
 
 .submit-button, #add-review-button {
     padding: 10px;
-    background-color: #ddd;
+    background-color: #e6596b;
     color: white;
     border: none;
     border-radius: 5px;
@@ -131,4 +148,24 @@ footer {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+    font-size: 1rem;
+}
+
+.star-rating{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 1.6rem;
+    color: lightgray;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star:hover ~ .star,
+.star.selected {
+    color: #e6596b;
 }
